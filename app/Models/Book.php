@@ -47,6 +47,9 @@ class Book extends Model
             );
     }
 
+    public function scopeMinReviews(Builder $query, int $reviews){
+        return $query->having('reviews_count', '>=', $reviews);
+    }
 
     //private functions
     private function dateRangeFilter(Builder $query, string $from = null, string $to = null): Builder{
